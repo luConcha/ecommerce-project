@@ -9,31 +9,33 @@ function StoreProvider(props) {
   const [selectedProduct, setSelectedProduct] = useState({});
   const [search, setSearch] = useState('');
 
-  // useEffect(() => {
-  //  const getAllItems = async () => {
-  //    try {
-  //      const response = await getAllItems();
-  //      setProducts(results);
-  //      setLoading(false);
-  //    } catch (error) {
-  //      console.log(error);
-  //    }
-  //  };
-  //  getAllItems()
-  // }, []);
-
   useEffect(() => {
-    fetch('https://ecommerce-json-lacm.onrender.com/items')
-      .then((response) => response.json())
-      .then((results) => {
-        console.log(results);
-        setProducts(results);
-        setLoading(false);
-      })
-      .catch((error) => {
+    const fetchItemData = async () => {
+      try {
+        const response = await getAllItems();
+        if (response.status === 200) {
+          setProducts(response.data);
+          setLoading(false);
+        }
+      } catch (error) {
         console.log(error);
-      });
+      }
+    };
+    fetchItemData();
   }, []);
+
+  // useEffect(() => {
+  //   fetch('https://ecommerce-json-lacm.onrender.com/items')
+  //     .then((response) => response.json())
+  //     .then((results) => {
+  //       console.log(results);
+  //       setProducts(results);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   const data = {
     products,
