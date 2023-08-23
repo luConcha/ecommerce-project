@@ -6,7 +6,6 @@ const StoreContext = createContext();
 function StoreProvider(props) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedProduct, setSelectedProduct] = useState({});
   const [search, setSearch] = useState('');
 
   useEffect(() => {
@@ -24,24 +23,9 @@ function StoreProvider(props) {
     fetchItemData();
   }, []);
 
-  // useEffect(() => {
-  //   fetch('https://ecommerce-json-lacm.onrender.com/items')
-  //     .then((response) => response.json())
-  //     .then((results) => {
-  //       console.log(results);
-  //       setProducts(results);
-  //       setLoading(false);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
-
   const data = {
     products,
     loading,
-    selectedProduct,
-    setSelectedProduct,
     setSearch,
     search,
   };

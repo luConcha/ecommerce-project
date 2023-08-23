@@ -5,7 +5,7 @@ import logo from '@/assets/store-32.ico';
 import shoppingCart from '@/assets/shopping-cart-32.ico';
 
 const Header = () => {
-  const { isAuth, logout } = useAuthContext();
+  const { isAuth, logout, userPayload } = useAuthContext();
   const { setSearch } = useStoreContext();
 
   const handleSearch = (e) => {
@@ -28,51 +28,13 @@ const Header = () => {
                 Home
               </NavLink>
             </li>
-            <li>
-              <NavLink to='/' className='nav-link px-2 text-secondary'>
-                About
-              </NavLink>
-            </li>
-            {/* <li className='nav-item dropdown'>
-              <NavLink
-                className='nav-link dropdown-toggle'
-                to='/'
-                data-bs-toggle='dropdown'
-                aria-expanded='false'
-                role='button'
-              >
-                Categorias
-              </NavLink>
-              <ul className='dropdown-menu'>
-                <li>
-                  <NavLink
-                    style={{ backgroundColor: 'white', color: 'gray' }}
-                    className='dropdown-item'
-                    href=''
-                  >
-                    lago
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    style={{ backgroundColor: 'white', color: 'gray' }}
-                    className='dropdown-item'
-                    href=''
-                  >
-                    lago
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    style={{ backgroundColor: 'white', color: 'gray' }}
-                    className='dropdown-item'
-                    href=''
-                  >
-                    lago
-                  </NavLink>
-                </li>
-              </ul>
-            </li> */}
+            {userPayload?.role === 'ADMIN' ? (
+              <li>
+                <NavLink to='/admin' className='nav-link px-2 text-secondary'>
+                  Admin
+                </NavLink>
+              </li>
+            ) : null}
           </ul>
           <form
             className='col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3'

@@ -17,5 +17,6 @@ axios.interceptors.request.use(
 
 const getSingleItem = (id) => axios.get(`${BASE_URL}/items/${id}`);
 const getAllItems = () => axios.get(`${BASE_URL}/items`);
+const createItem = (data) => axios.post(`${BASE_URL}/items`, data);
 
-export { getSingleItem, getAllItems };
+export { getSingleItem, getAllItems, createItem };
