@@ -48,7 +48,7 @@ const Admin = () => {
         <div className='row justify-content-md-center'>
           <div className='col-sm-6'>
             <div className='card'>
-              <div class='card-header'>Create new products</div>
+              <div className='card-header'>Create new products</div>
               <div className='card-body'>
                 <form onSubmit={handleSubmit}>
                   <div className='input-group mb-3'></div>
